@@ -199,7 +199,7 @@ object Assembly {
         dest
       }
     val jarDirs =
-      (for(jar <- libsFiltered.par) yield {
+      (for(jar <- libsFiltered) yield {
         val jarName = jar.data.asFile.getName
         val jarRules = shadeRules
           .filter(r => (r.isApplicableToAll || jar.metadata.get(moduleID.key).exists(r.isApplicableTo)))
